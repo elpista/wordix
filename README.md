@@ -10,7 +10,8 @@ Universidad Nacional del Comahue
 
 # Integrantes del Grupo 
 
-- **Marco Pistagnesi** - Legajo 4407 - mail: marcopistagnesi2003@gmail.com - Github: elpista
+- **Marco Pistagnesi** - Legajo 4407 - Mail: marcopistagnesi2003@gmail.com - Github: elpista
+- **German Metzger**   - Legajo 3521 - Mail: metzgergerman@gmail.com       - Github: GermanMetzger  
 
 # Grupo N° 8
 
