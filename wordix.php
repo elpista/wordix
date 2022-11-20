@@ -31,7 +31,10 @@ const ESTADO_LETRA_PERTENECE = "pertenece";
 *****************************************************************************************************************/
 
 /**
- *  ****COMPLETAR*****
+ * Esta funcion pide un numero y verifica que este dentro de los parametros formales.
+ * @param int $min 
+ * @param int $max
+ * @return int $numero
  */
 function solicitarNumeroEntre($min, $max)
 {
