@@ -6,7 +6,7 @@ para jugar al Wordix.
 Puede ser utilizada por cualquier programador para incluir en sus programas.
 */
 
-/*********************************************************************************************************************
+/*********************************************** CONSTANTES *********************************************************
  Una constante es un identificador con un valor inmodificable, permanece fijo durante toda la ejecución del programa.
  Se las define antecediéndole la palabra reservada const.
  No existe una zona determinada para su declaración. Pueden ser globales o locales.
@@ -24,7 +24,7 @@ const ESTADO_LETRA_ENCONTRADA = "encontrada";
 const ESTADO_LETRA_DESCARTADA = "descartada";
 const ESTADO_LETRA_PERTENECE = "pertenece";
 
-/****************************************************************************************************************
+/************************************************** FUNCIONES ***************************************************
  Una función es un conjunto de instrucciones que a lo largo del programa van a ser ejecutadas multitud de veces.
  Es por ello, que este conjunto de instrucciones se agrupan en una función.
  Las funciones pueden ser llamadas y ejecutadas desde cualquier punto del programa.
@@ -153,7 +153,7 @@ function escribirMensajeBienvenida($usuario)
     echo "8) Salir \n";
     echo "***************************************************\n";
     $teclado = trim(fgets(STDIN));
-    while($teclado >> 8 || $teclado << 1 || !is_numeric($teclado)){
+    while($teclado > 8 || $teclado < 1 || !is_numeric($teclado)){
         echo "Debes ingresar un valor válido \n";
         $teclado = trim(fgets(STDIN));
     }
