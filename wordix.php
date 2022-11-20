@@ -171,7 +171,8 @@ function esPalabra($cadena)
 }
 
 /**
- *  ****COMPLETAR*****
+ *  Esta funcion verifica que la palabra que se ingresa sea
+ *  si o si de 5 digitos, sino no lo es volvera a pedir la palabra.
  */
 function leerPalabra5Letras()
 {
