@@ -360,7 +360,8 @@ function esIntentoGanado($estructuraPalabraIntento)
 }
 
 /**
- * ****COMPLETAR***** documentación de la intefaz
+ * el jugador obtiene un puntaje de acuerdo a las reglas.
+ * esta funcion calcula la cantidad de puntos obtenidos en su partida wordix.
  */
 function obtenerPuntajeWordix()  /* ****COMPLETAR***** parámetros formales necesarios */
 {
