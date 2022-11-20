@@ -11,9 +11,11 @@ include_once("wordix.php");
 
 
 
-/**************************************/
-/***** DEFINICION DE FUNCIONES ********/
-/**************************************/
+/************************************************** FUNCIONES ***************************************************
+ Una función es un conjunto de instrucciones que a lo largo del programa van a ser ejecutadas multitud de veces.
+ Es por ello, que este conjunto de instrucciones se agrupan en una función.
+ Las funciones pueden ser llamadas y ejecutadas desde cualquier punto del programa.
+*****************************************************************************************************************/
 
 /**
  * Obtiene una colección de palabras
@@ -48,7 +50,7 @@ function cargarColeccionPalabras()
 
 //Proceso:
 
-$partida = jugarWordix("MELON", strtolower("MaJo"));
+$partida = jugarWordix("MELON", strtolower("German"));
 //print_r($partida);
 //imprimirResultado($partida);
 

@@ -6,9 +6,11 @@ para jugar al Wordix.
 Puede ser utilizada por cualquier programador para incluir en sus programas.
 */
 
-/**************************************/
-/***** DEFINICION DE CONSTANTES *******/
-/**************************************/
+/*********************************************** CONSTANTES *********************************************************
+ Una constante es un identificador con un valor inmodificable, permanece fijo durante toda la ejecución del programa.
+ Se las define antecediéndole la palabra reservada const.
+ No existe una zona determinada para su declaración. Pueden ser globales o locales.
+ ********************************************************************************************************************/
 const CANT_INTENTOS = 6;
 
 /*
@@ -22,12 +24,17 @@ const ESTADO_LETRA_ENCONTRADA = "encontrada";
 const ESTADO_LETRA_DESCARTADA = "descartada";
 const ESTADO_LETRA_PERTENECE = "pertenece";
 
-/**************************************/
-/***** DEFINICION DE FUNCIONES ********/
-/**************************************/
+/************************************************** FUNCIONES ***************************************************
+ Una función es un conjunto de instrucciones que a lo largo del programa van a ser ejecutadas multitud de veces.
+ Es por ello, que este conjunto de instrucciones se agrupan en una función.
+ Las funciones pueden ser llamadas y ejecutadas desde cualquier punto del programa.
+*****************************************************************************************************************/
 
 /**
- *  ****COMPLETAR*****
+ * Esta funcion pide un numero y verifica que este dentro de los parametros formales.
+ * @param int $min 
+ * @param int $max
+ * @return int $numero
  */
 function solicitarNumeroEntre($min, $max)
 {
@@ -146,7 +153,7 @@ function escribirMensajeBienvenida($usuario)
     echo "8) Salir \n";
     echo "***************************************************\n";
     $teclado = trim(fgets(STDIN));
-    while($teclado >> 8 || $teclado << 1 || !is_numeric($teclado)){
+    while($teclado > 8 || $teclado < 1 || !is_numeric($teclado)){
         echo "Debes ingresar un valor válido \n";
         $teclado = trim(fgets(STDIN));
     }
@@ -192,7 +199,7 @@ function leerPalabra5Letras()
 
 
 /**
- * Inicia una estructura de datos Teclado. La estructura es de tipo: ¿Indexado, asociativo o Multidimensional?
+ * Inicia una estructura de datos Teclado. La estructura es de tipo: Asociativo
  *@return array
  */
 function iniciarTeclado()
@@ -201,10 +208,10 @@ function iniciarTeclado()
     $teclado = [
         "A" => ESTADO_LETRA_DISPONIBLE, "B" => ESTADO_LETRA_DISPONIBLE, "C" => ESTADO_LETRA_DISPONIBLE, "D" => ESTADO_LETRA_DISPONIBLE, "E" => ESTADO_LETRA_DISPONIBLE,
         "F" => ESTADO_LETRA_DISPONIBLE, "G" => ESTADO_LETRA_DISPONIBLE, "H" => ESTADO_LETRA_DISPONIBLE, "I" => ESTADO_LETRA_DISPONIBLE, "J" => ESTADO_LETRA_DISPONIBLE,
-        "K" => ESTADO_LETRA_DISPONIBLE, "L" => ESTADO_LETRA_DISPONIBLE, "M" => ESTADO_LETRA_DISPONIBLE, "N" => ESTADO_LETRA_DISPONIBLE, 
-        "O" => ESTADO_LETRA_DISPONIBLE, "P" => ESTADO_LETRA_DISPONIBLE, "Q" => ESTADO_LETRA_DISPONIBLE, "R" => ESTADO_LETRA_DISPONIBLE, "S" => ESTADO_LETRA_DISPONIBLE,
-        "T" => ESTADO_LETRA_DISPONIBLE, "U" => ESTADO_LETRA_DISPONIBLE, "V" => ESTADO_LETRA_DISPONIBLE, "W" => ESTADO_LETRA_DISPONIBLE, "X" => ESTADO_LETRA_DISPONIBLE,
-        "Y" => ESTADO_LETRA_DISPONIBLE, "Z" => ESTADO_LETRA_DISPONIBLE
+        "K" => ESTADO_LETRA_DISPONIBLE, "L" => ESTADO_LETRA_DISPONIBLE, "M" => ESTADO_LETRA_DISPONIBLE, "N" => ESTADO_LETRA_DISPONIBLE, "O" => ESTADO_LETRA_DISPONIBLE, 
+        "P" => ESTADO_LETRA_DISPONIBLE, "Q" => ESTADO_LETRA_DISPONIBLE, "R" => ESTADO_LETRA_DISPONIBLE, "S" => ESTADO_LETRA_DISPONIBLE, "T" => ESTADO_LETRA_DISPONIBLE, 
+        "U" => ESTADO_LETRA_DISPONIBLE, "V" => ESTADO_LETRA_DISPONIBLE, "W" => ESTADO_LETRA_DISPONIBLE, "X" => ESTADO_LETRA_DISPONIBLE, "Y" => ESTADO_LETRA_DISPONIBLE, 
+        "Z" => ESTADO_LETRA_DISPONIBLE
     ];
     return $teclado;
 }
@@ -353,7 +360,8 @@ function esIntentoGanado($estructuraPalabraIntento)
 }
 
 /**
- * ****COMPLETAR***** documentación de la intefaz
+ * el jugador obtiene un puntaje de acuerdo a las reglas.
+ * esta funcion calcula la cantidad de puntos obtenidos en su partida wordix.
  */
 function obtenerPuntajeWordix()  /* ****COMPLETAR***** parámetros formales necesarios */
 {
