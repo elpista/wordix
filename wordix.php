@@ -134,7 +134,7 @@ function escribirSegunEstado($texto, $estado)
  */
 function escribirMensajeBienvenida($usuario)
 {
-// int $teclado
+// int $entrada
     echo "***************************************************\n";
     echo "** Hola ";
     escribirAmarillo($usuario);
