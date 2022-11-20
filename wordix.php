@@ -122,7 +122,7 @@ function escribirSegunEstado($texto, $estado)
 
 /**
  * Escribe un texto de bienvenida y selecciona las opciones del juego
- * @param int $teclado
+ * @param int $usuario
  * @return int
  */
 function escribirMensajeBienvenida($usuario)
@@ -155,7 +155,9 @@ function escribirMensajeBienvenida($usuario)
 
 
 /**
- * ****COMPLETAR*****
+ * Verifica si una variable consiste completamente de letras
+ * @param string $cadena
+ * @return boolean
  */
 function esPalabra($cadena)
 {
