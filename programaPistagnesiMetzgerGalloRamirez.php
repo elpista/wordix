@@ -6,6 +6,7 @@ include_once("wordix.php");
 /**************************************/
 
 /* Apellido, Nombre. Legajo. Carrera. mail. Usuario Github */
+/* Pistagnesi, Marco. FAI-4407. TUDW. marcopistagnesi2003@gmail.com. elpista */
 /* Metzger, German. FAI-3521. TUDW. metzgergerman@gmail.com. GermanMetzger */
 /* ... COMPLETAR ... */
 
