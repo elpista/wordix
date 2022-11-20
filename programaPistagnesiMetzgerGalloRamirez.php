@@ -17,7 +17,7 @@ include_once("wordix.php");
  Es por ello, que este conjunto de instrucciones se agrupan en una función.
  Las funciones pueden ser llamadas y ejecutadas desde cualquier punto del programa.
 *****************************************************************************************************************/
-
+//prueba
 /**
  * Obtiene una colección de palabras
  * @return array
