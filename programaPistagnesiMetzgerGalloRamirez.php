@@ -56,7 +56,7 @@ $partida = jugarWordix("MELON", strtolower("MaJo"));
 
 /*
 do {
-    $opcion = ...;
+    $opcion = escribirMensajeBienvenida($usuario);
 
     
     switch ($opcion) {
