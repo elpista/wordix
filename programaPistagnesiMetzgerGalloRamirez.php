@@ -75,8 +75,26 @@ do {
             //completar qué secuencia de pasos ejecutar si el usuario elige la opción 3
 
             break;
-        
-            //...
+        case 4:
+
+
+            break;
+        case 5:
+
+
+            break;
+        case 6:
+
+
+            break;
+        case 7:
+
+
+            break;
+        case 8:
+
+
+            break;
     }
 } while ($opcion != X);
 */
