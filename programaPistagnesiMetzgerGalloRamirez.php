@@ -51,13 +51,41 @@ function cargarColeccionPalabras()
 
 //Proceso:
 
-$partida = jugarWordix("MELON", strtolower("German"));
+function Menu($nombreUsuario){
+    echo "***************************************************\n";
+    echo "** Seleccione una de las opciones: **\n";
+    echo "1) Jugar con palabra elegida \n";
+    echo "2) Jugar con palabra aleatoria \n";
+    echo "3) Mostrar una partida \n";
+    echo "4) Mostrar la primer partida ganadora \n";
+    echo "5) Mostrar resumen de ";
+    echo $nombreUsuario;
+    echo " \n";
+    echo "6) Mostrar listado de partidas ordenadas por jugador y por palabra \n";
+    echo "7) Agregar una palabra de 5 letras a Wordix \n";
+    echo "8) Salir \n";
+    echo "***************************************************\n";
+    $tecladoEntrada = trim(fgets(STDIN));
+     while($tecladoEntrada > 8 || $tecladoEntrada < 1 || !is_numeric($tecladoEntrada)){
+        echo "Debes ingresar un valor válido \n";
+        $tecladoEntrada = trim(fgets(STDIN));
+     }
+     return $tecladoEntrada;
+    }
+
+
+$nombreUsuario = escribirMensajeBienvenida();
+$numeroDelMenu = menu($nombreUsuario);
+echo $numeroDelMenu;
+
+
+
 //print_r($partida);
 //imprimirResultado($partida);
 
 
 
-/*
+
 do {
     $opcion = escribirMensajeBienvenida($usuario);
 
@@ -96,5 +124,5 @@ do {
 
             break;
     }
-} while ($opcion != X);
-*/
+} while ($opcion != $algo);
+

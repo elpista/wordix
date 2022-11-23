@@ -132,13 +132,16 @@ function escribirSegunEstado($texto, $estado)
  * @param int $usuario
  * @return int
  */
-function escribirMensajeBienvenida($usuario)
+function escribirMensajeBienvenida()
 {
 // int $entrada
     echo "***************************************************\n";
-    echo "** Hola ";
-    escribirAmarillo($usuario);
-    echo " Juguemos una PARTIDA de WORDIX! **\n";
+    echo "** Bienvenido ";
+    echo "ingrese su nombre: ";
+    $usuario = trim(fgets(STDIN));
+    echo " Hola ".$usuario.", Juguemos una PARTIDA de WORDIX! **\n";
+
+    return $usuario;
     
 }
 
@@ -358,12 +361,11 @@ function obtenerPuntajeWordix()  /* ****COMPLETAR***** parámetros formales nece
  * @param string $nombreUsuario
  * @return array estructura con el resumen de la partida, para poder ser utilizada en estadísticas.
  */
-function jugarWordix($palabraWordix, $nombreUsuario)
+function jugarWordix($palabraWordix)
 {
     /*Inicialización*/
     $arregloDeIntentosWordix = [];
     $teclado = iniciarTeclado();
-    escribirMensajeBienvenida($nombreUsuario);
     $nroIntento = 1;
     do {
 
@@ -401,23 +403,3 @@ function jugarWordix($palabraWordix, $nombreUsuario)
 
     return $partida;
 }
-
-/*    echo "***************************************************\n";
-    echo "** Seleccione una de las opciones: **\n";
-    echo "1) Jugar con palabra elegida \n";
-    echo "2) Jugar con palabra aleatoria \n";
-    echo "3) Mostrar una partida \n";
-    echo "4) Mostrar la primer partida ganadora \n";
-    echo "5) Mostrar resumen de ";
-    echo $usuario;
-    echo " \n";
-    echo "6) Mostrar listado de partidas ordenadas por jugador y por palabra \n";
-    echo "7) Agregar una palabra de 5 letras a Wordix \n";
-    echo "8) Salir \n";
-    echo "***************************************************\n";
-    $teclado = trim(fgets(STDIN));
-    while($teclado > 8 || $teclado < 1 || !is_numeric($teclado)){
-        echo "Debes ingresar un valor válido \n";
-        $teclado = trim(fgets(STDIN));
-    }
-    return $teclado; */
