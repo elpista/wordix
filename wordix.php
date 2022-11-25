@@ -35,7 +35,7 @@ const ESTADO_LETRA_PERTENECE = "pertenece";
  * @param int $min 
  * @param int $max
  * @return int $numero
- */
+ */ 
 function solicitarNumeroEntre($min, $max)
 {
     //int $numero
@@ -352,6 +352,7 @@ function obtenerPuntajeWordix()  /* ****COMPLETAR***** parámetros formales nece
 {
 
     /* ****COMPLETAR***** cuerpo de la función*/
+    
     return 0;
 }
 
@@ -361,7 +362,7 @@ function obtenerPuntajeWordix()  /* ****COMPLETAR***** parámetros formales nece
  * @param string $nombreUsuario
  * @return array estructura con el resumen de la partida, para poder ser utilizada en estadísticas.
  */
-function jugarWordix($palabraWordix)
+function jugarWordix($palabraWordix,$nombreUsuario)
 {
     /*Inicialización*/
     $arregloDeIntentosWordix = [];

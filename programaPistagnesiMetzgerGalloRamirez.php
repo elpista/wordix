@@ -8,8 +8,8 @@ include_once("wordix.php");
 /* Apellido, Nombre. Legajo. Carrera. mail. Usuario Github */
 /* Pistagnesi, Marco. FAI-4407. TUDW. marcopistagnesi2003@gmail.com. elpista */
 /* Metzger, German. FAI-3521. TUDW. metzgergerman@gmail.com. GermanMetzger */
-/* ... COMPLETAR ... */
-
+/* Ramirez, Juan Manuel. FAI-4391. TUDW. ramirezjuanmanu00@gmail.com. juanmanu0 */
+/* Gallardo, Gabriel. FAI-4418. TUDW. ggabi7634@gmail.com. ggabi30 */
 
 
 /************************************************** FUNCIONES ***************************************************
@@ -73,11 +73,34 @@ function Menu($nombreUsuario){
      return $tecladoEntrada;
     }
 
-
 $nombreUsuario = escribirMensajeBienvenida();
 $numeroDelMenu = menu($nombreUsuario);
 echo $numeroDelMenu;
 
+
+function ($nroIntentos){
+
+    if($nroIntentos=="1"){
+        $puntInicial=6;
+    }
+    elseif($nroIntentos=="2"){
+        $puntInicial=5;
+    }
+    elseif($nroIntentos=="3"){
+        $puntInicial=4;
+    }
+    elseif($nroIntentos=="4"){
+        $puntInicial=3;
+    }
+    elseif($nroIntentos=="5"){
+        $puntInicial=2;
+    }
+    elseif($nroIntentos=="6"){
+        $puntInicial=1
+    }else{
+        $puntIncial=0
+    }
+}
 
 
 //print_r($partida);
