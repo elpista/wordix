@@ -17,7 +17,7 @@ include_once("wordix.php");
  Es por ello, que este conjunto de instrucciones se agrupan en una función.
  Las funciones pueden ser llamadas y ejecutadas desde cualquier punto del programa.
 *****************************************************************************************************************/
-//prueba
+
 /**
  * Obtiene una colección de palabras
  * @return array
@@ -35,23 +35,14 @@ function cargarColeccionPalabras()
     return ($coleccionPalabras);
 }
 
-/* ... COMPLETAR ... */
+function imprimirResultado(){
 
+    return 1;
 
+}
 
-/**************************************/
-/*********** PROGRAMA PRINCIPAL *******/
-/**************************************/
-
-//Declaración de variables:
-
-
-//Inicialización de variables:
-
-
-//Proceso:
-
-function Menu($nombreUsuario){
+function menu($nombreUsuario){
+    // int $tecladoEntrada
     echo "***************************************************\n";
     echo "** Seleccione una de las opciones: **\n";
     echo "1) Jugar con palabra elegida \n";
@@ -65,38 +56,68 @@ function Menu($nombreUsuario){
     echo "7) Agregar una palabra de 5 letras a Wordix \n";
     echo "8) Salir \n";
     echo "***************************************************\n";
-    $tecladoEntrada = trim(fgets(STDIN));
-     while($tecladoEntrada > 8 || $tecladoEntrada < 1 || !is_numeric($tecladoEntrada)){
-        echo "Debes ingresar un valor válido \n";
-        $tecladoEntrada = trim(fgets(STDIN));
-     }
+    $tecladoEntrada = solicitarNumeroEntre(1, 8);
      return $tecladoEntrada;
     }
 
-
-$nombreUsuario = escribirMensajeBienvenida();
-$numeroDelMenu = menu($nombreUsuario);
-echo $numeroDelMenu;
+/* ... COMPLETAR ... */
 
 
+/**************************************/
+/*********** PROGRAMA PRINCIPAL *******/
+/**************************************/
+
+//Declaración de variables:
+// int $numeroPalabra
+// int $partida
+// array $partidasJugadas
+// array $resumenJugador
+// array $partidasJugadas
+
+//Inicialización de variables:
+
+$partidasJugadas = [];
+$resumenJugador = [];
+$partidasJugadas = [];
+
+//Proceso:
+
+escribirMensajeBienvenida();
 
 //print_r($partida);
 //imprimirResultado($partida);
 
 
-
-
 do {
-    $opcion = escribirMensajeBienvenida($usuario);
+    $opcion = menu($nombreUsuario);
 
     
     switch ($opcion) {
         case 1: 
             //completar qué secuencia de pasos ejecutar si el usuario elige la opción 1
+            echo "Ingrese el nombre del jugador \n";
+            $nombreUsuario = trim(fgets(STDIN));
+            echo "Ingrese un número entre 1 y 20 \n";
+            $numeroPalabra = solicitarNumeroEntre(1, 20) - 1;
+            $partida = jugarWordix(cargarColeccionPalabras()[$numeroPalabra], $nombreUsuario);
+            $partidasJugadas[count($partidasJugadas)]["palabraWordix"] = $partida["palabraWordix"];
+            $partidasJugadas[count($partidasJugadas)]["jugador"] = $partida["jugador"];
+            $partidasJugadas[count($partidasJugadas)]["intentos"] = $partida["intentos"];
+            $partidasJugadas[count($partidasJugadas)]["puntaje"] = $partida["puntaje"];
+            print_r($partidasJugadas); //esta línea es solo para hacer pruebas
 
             break;
         case 2: 
             //completar qué secuencia de pasos ejecutar si el usuario elige la opción 2
+            $numeroPalabra = rand(0, 19);
+            echo "Ingrese el nombre del jugador \n";
+            $nombreUsuario = trim(fgets(STDIN));
+            $partida = jugarWordix(cargarColeccionPalabras()[$numeroPalabra], $nombreUsuario);
+            $partidasJugadas[count($partidasJugadas)]["palabraWordix"] = $partida["palabraWordix"];
+            $partidasJugadas[count($partidasJugadas)]["jugador"] = $partida["jugador"];
+            $partidasJugadas[count($partidasJugadas)]["intentos"] = $partida["intentos"];
+            $partidasJugadas[count($partidasJugadas)]["puntaje"] = $partida["puntaje"];
+            print_r($partidasJugadas); //esta línea es solo para hacer pruebas
 
             break;
         case 3: 
@@ -120,9 +141,9 @@ do {
 
             break;
         case 8:
-
+            echo "Cerrando Wordix...";
 
             break;
     }
-} while ($opcion != $algo);
+} while ($opcion != 8);
 

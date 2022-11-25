@@ -129,19 +129,13 @@ function escribirSegunEstado($texto, $estado)
 
 /**
  * Escribe un texto de bienvenida y selecciona las opciones del juego
- * @param int $usuario
- * @return int
  */
 function escribirMensajeBienvenida()
 {
-// int $entrada
+// int $usuario
     echo "***************************************************\n";
-    echo "** Bienvenido ";
-    echo "ingrese su nombre: ";
-    $usuario = trim(fgets(STDIN));
-    echo " Hola ".$usuario.", Juguemos una PARTIDA de WORDIX! **\n";
-
-    return $usuario;
+    echo "** Bienvenido \n";
+    echo "Juguemos una PARTIDA de WORDIX! **\n";
     
 }
 
@@ -361,8 +355,9 @@ function obtenerPuntajeWordix()  /* ****COMPLETAR***** parámetros formales nece
  * @param string $nombreUsuario
  * @return array estructura con el resumen de la partida, para poder ser utilizada en estadísticas.
  */
-function jugarWordix($palabraWordix)
+function jugarWordix($palabraWordix, $nombreUsuario)
 {
+    // array $partida
     /*Inicialización*/
     $arregloDeIntentosWordix = [];
     $teclado = iniciarTeclado();
