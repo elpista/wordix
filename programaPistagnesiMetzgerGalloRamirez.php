@@ -41,7 +41,7 @@ function imprimirResultado(){
 
 }
 
-function menu($nombreUsuario){
+function menu(){
     // int $tecladoEntrada
     echo "***************************************************\n";
     echo "** Seleccione una de las opciones: **\n";
@@ -49,16 +49,33 @@ function menu($nombreUsuario){
     echo "2) Jugar con palabra aleatoria \n";
     echo "3) Mostrar una partida \n";
     echo "4) Mostrar la primer partida ganadora \n";
-    echo "5) Mostrar resumen de ";
-    echo $nombreUsuario;
-    echo " \n";
+    echo "5) Mostrar resumen de jugador \n";
     echo "6) Mostrar listado de partidas ordenadas por jugador y por palabra \n";
     echo "7) Agregar una palabra de 5 letras a Wordix \n";
     echo "8) Salir \n";
     echo "***************************************************\n";
     $tecladoEntrada = solicitarNumeroEntre(1, 8);
-     return $tecladoEntrada;
+    return $tecladoEntrada;
+}
+
+function mostrarPartida($partidas, $indice){
+
+    echo "***************************************************\n";
+    echo "partida WORDIX n°" . $indice + 1 . ": palabra " . $partidas[$indice]["palabraWordix"] . " \n";
+    echo "Jugador: " . $partidas[$indice]["jugador"] . " \n";
+    echo "puntaje: " . $partidas[$indice]["puntaje"] . " \n";
+    if($partidas[$indice]["intentos"] == 0) {
+
+        echo "No adivinó la palabra";
+
+    } else {
+
+        echo "Intento: " . $partidas[$indice]["intentos"] . " \n";
+
     }
+    echo "***************************************************\n";
+
+}
 
 /* ... COMPLETAR ... */
 
@@ -70,6 +87,7 @@ function menu($nombreUsuario){
 //Declaración de variables:
 // int $numeroPalabra
 // int $partida
+// int $buscarPartida
 // array $partidasJugadas
 // array $resumenJugador
 // array $partidasJugadas
@@ -112,7 +130,7 @@ escribirMensajeBienvenida();{
 
 
 do {
-    $opcion = menu($nombreUsuario);
+    $opcion = menu();
 
     
     switch ($opcion) {
@@ -123,10 +141,11 @@ do {
             echo "Ingrese un número entre 1 y 20 \n";
             $numeroPalabra = solicitarNumeroEntre(1, 20) - 1;
             $partida = jugarWordix(cargarColeccionPalabras()[$numeroPalabra], $nombreUsuario);
-            $partidasJugadas[count($partidasJugadas)]["palabraWordix"] = $partida["palabraWordix"];
-            $partidasJugadas[count($partidasJugadas)]["jugador"] = $partida["jugador"];
-            $partidasJugadas[count($partidasJugadas)]["intentos"] = $partida["intentos"];
-            $partidasJugadas[count($partidasJugadas)]["puntaje"] = $partida["puntaje"];
+            $numeroDePartida = count($partidasJugadas);
+            $partidasJugadas[$numeroDePartida]["palabraWordix"] = $partida["palabraWordix"];
+            $partidasJugadas[$numeroDePartida]["jugador"] = $partida["jugador"];
+            $partidasJugadas[$numeroDePartida]["intentos"] = $partida["intentos"];
+            $partidasJugadas[$numeroDePartida]["puntaje"] = $partida["puntaje"];
             print_r($partidasJugadas); //esta línea es solo para hacer pruebas
 
             break;
@@ -136,15 +155,31 @@ do {
             echo "Ingrese el nombre del jugador \n";
             $nombreUsuario = trim(fgets(STDIN));
             $partida = jugarWordix(cargarColeccionPalabras()[$numeroPalabra], $nombreUsuario);
-            $partidasJugadas[count($partidasJugadas)]["palabraWordix"] = $partida["palabraWordix"];
-            $partidasJugadas[count($partidasJugadas)]["jugador"] = $partida["jugador"];
-            $partidasJugadas[count($partidasJugadas)]["intentos"] = $partida["intentos"];
-            $partidasJugadas[count($partidasJugadas)]["puntaje"] = $partida["puntaje"];
+            $numeroDePartida = count($partidasJugadas);
+            $partidasJugadas[$numeroDePartida]["palabraWordix"] = $partida["palabraWordix"];
+            $partidasJugadas[$numeroDePartida]["jugador"] = $partida["jugador"];
+            $partidasJugadas[$numeroDePartida]["intentos"] = $partida["intentos"];
+            $partidasJugadas[$numeroDePartida]["puntaje"] = $partida["puntaje"];
             print_r($partidasJugadas); //esta línea es solo para hacer pruebas
 
             break;
         case 3: 
             //completar qué secuencia de pasos ejecutar si el usuario elige la opción 3
+            if (count($partidasJugadas) == 0){
+                echo "No se encontraron partidas guardadas \n";
+            } else {
+                echo "Seleccione un numero de partida \n";
+                $buscarPartida = trim(fgets(STDIN));
+                while($buscarPartida > count($partidasJugadas) || $buscarPartida <= 0){
+                    echo "Debe seleccionar un numero menor o igual a ";
+                    echo count($partidasJugadas);
+                    echo " y mayor a 0 \n";
+                    $buscarPartida = trim(fgets(STDIN));
+                }
+                $buscarPartida = $buscarPartida - 1;
+                mostrarPartida($partidasJugadas, $buscarPartida);
+
+            }
 
             break;
         case 4:
