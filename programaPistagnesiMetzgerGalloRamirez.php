@@ -96,20 +96,20 @@ function ($nroIntentos){
         $puntInicial=2;
     }
     elseif($nroIntentos=="6"){
-        $puntInicial=1
+        $puntInicial=1;
     }else{
-        $puntIncial=0
+        $puntIncial=0;
     }
-}
+};
 
 
-//print_r($partida);
-//imprimirResultado($partida);
+//print_r($partida)
+//imprimirResultado($partida)
 
 
 
 
-do {
+do{
     $opcion = escribirMensajeBienvenida($usuario);
 
     
@@ -147,5 +147,5 @@ do {
 
             break;
     }
-} while ($opcion != $algo);
+}while ($opcion != $algo);
 
