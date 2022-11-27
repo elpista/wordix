@@ -67,14 +67,13 @@ function mostrarPartida($partidas, $indice){
     
     if($partidas[$indice]["intentos"] == 0) {
 
-        echo "No adivinó la palabra";
+        echo "No adivinó la palabra"."\n";
 
     } else {
 
-        echo "Intento: " . $partidas[$indice]["intentos"] . " \n";
+        echo "Intento: Adivino la palabra en " . $partidas[$indice]["intentos"] . " intentos"." \n";
 
     }
-    echo "resultado: " . $partidas[$indice]["resultado"] . "\n";
     echo "***************************************************\n";
 
 }
@@ -167,7 +166,7 @@ do {
             $partidasJugadas[$numeroDePartida]["intentos"] = $partida["intentos"];
             $partidasJugadas[$numeroDePartida]["puntaje"] = $partida["puntaje"];
             $partidasJugadas[$numeroDePartida]["resultado"] = $partida["resultado"];
-            print_r($partidasJugadas); //esta línea es solo para hacer pruebas
+            mostrarPartida($partidasJugadas,$numeroDePartida);
 
             break;
         case 3: 
@@ -201,7 +200,7 @@ do {
                     $nombreUsuario = trim(fgets(STDIN));  
                     foreach($partidasJugadas as $jugador){
                         if($partida["jugador"]<> $nombreUsuario){
-                            echo "No se encuntra el jugador en la base de datos"."\n";
+                            echo "No existe jugador"."\n";
                         }
                     }
 
@@ -209,10 +208,14 @@ do {
                         foreach($partidasJugadas as $partida){                
                             if($partida["jugador"]==$nombreUsuario && $partida["resultado"] == "Ganada"){
                     
-                                //print_r($partida);
+                            
                                 mostrarPartida($partidasJugadas, $indice);
-                            break;
+                                break;
+                            }else{
+                                "El jugador ". $nombreUsuario . " no ganó ninguna partida"."\n";
                             }
+                            
+                            
                         $indice++;
                         }
                      
