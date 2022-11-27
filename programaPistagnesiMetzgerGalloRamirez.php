@@ -193,42 +193,39 @@ do {
             $indice=0; 
             if (count($partidasJugadas) == 0){
                 echo "No se encontraron partidas guardadas \n";
-            }else{ 
-                
-                    
-                    echo "Ingrese el nombre del jugador \n";
-                    $nombreUsuario = trim(fgets(STDIN));  
-                    foreach($partidasJugadas as $jugador){
-                        if($partida["jugador"]<> $nombreUsuario){
-                            echo "No existe jugador"."\n";
+            }else{                     
+                echo "Ingrese el nombre del jugador \n";
+                $nombreUsuario = trim(fgets(STDIN));        
+
+                $jugadorExiste=false;
+                $partidaGanada=false;
+                foreach($partidasJugadas as $partida){                
+                    if($partida["jugador"]==$nombreUsuario){
+                        $jugadorExiste=true;
+
+                        if($partida["resultado"] == "Ganada"){                                                   
+                            $partidaGanada=true;
+                            mostrarPartida($partidasJugadas, $indice);
+                            break;
                         }
                     }
 
-                        
-                        foreach($partidasJugadas as $partida){                
-                            if($partida["jugador"]==$nombreUsuario && $partida["resultado"] == "Ganada"){
-                    
-                            
-                                mostrarPartida($partidasJugadas, $indice);
-                                break;
-                            }else{
-                                "El jugador ". $nombreUsuario . " no ganó ninguna partida"."\n";
-                            }
-                            
-                            
-                        $indice++;
-                        }
-                     
-
-                    
-                    
-             
+                    $indice++;
+                }
                 
-            
+                if(!$jugadorExiste){
+                    echo "No existe el jugador\n";
+                }
+                else {
+                    if(!$partidaGanada){
+                        echo "El jugador ".$nombreUsuario." no ganó ninguna partida\n";            
+                    }
+
+                }
             }
             break;
         case 5:
-
+            print_r($partidasJugadas);
 
             break;
         case 6:
