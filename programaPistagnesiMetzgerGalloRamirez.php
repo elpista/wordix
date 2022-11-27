@@ -64,6 +64,7 @@ function mostrarPartida($partidas, $indice){
     echo "partida WORDIX n°" . $indice + 1 . ": palabra " . $partidas[$indice]["palabraWordix"] . " \n";
     echo "Jugador: " . $partidas[$indice]["jugador"] . " \n";
     echo "puntaje: " . $partidas[$indice]["puntaje"] . " \n";
+    
     if($partidas[$indice]["intentos"] == 0) {
 
         echo "No adivinó la palabra";
@@ -73,6 +74,7 @@ function mostrarPartida($partidas, $indice){
         echo "Intento: " . $partidas[$indice]["intentos"] . " \n";
 
     }
+    echo "resultado: " . $partidas[$indice]["resultado"] . "\n";
     echo "***************************************************\n";
 
 }
@@ -146,6 +148,7 @@ do {
             $partidasJugadas[$numeroDePartida]["jugador"] = $partida["jugador"];
             $partidasJugadas[$numeroDePartida]["intentos"] = $partida["intentos"];
             $partidasJugadas[$numeroDePartida]["puntaje"] = $partida["puntaje"];
+            $partidasJugadas[$numeroDePartida]["resultado"] = $partida["resultado"];
             print_r($partidasJugadas); //esta línea es solo para hacer pruebas
 
             break;
@@ -160,6 +163,7 @@ do {
             $partidasJugadas[$numeroDePartida]["jugador"] = $partida["jugador"];
             $partidasJugadas[$numeroDePartida]["intentos"] = $partida["intentos"];
             $partidasJugadas[$numeroDePartida]["puntaje"] = $partida["puntaje"];
+            $partidasJugadas[$numeroDePartida]["resultado"] = $partida["resultado"];
             print_r($partidasJugadas); //esta línea es solo para hacer pruebas
 
             break;
@@ -183,6 +187,17 @@ do {
 
             break;
         case 4:
+            //completar qué secuencia de pasos ejecutar si el usuario elige la opción 4
+            echo "Ingrese el nombre del jugador \n";
+            $nombreUsuario = trim(fgets(STDIN));
+            foreach($partida as $elemento){
+                switch($elemento){
+                case $partida["resultado"] == "Ganada":
+                    print_r($partida);
+                }
+                break;
+            }
+           
 
 
             break;
