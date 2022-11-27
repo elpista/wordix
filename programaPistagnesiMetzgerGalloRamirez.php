@@ -98,11 +98,13 @@ function mostrarPartida($partidas, $indice){
 
 $partidasJugadas = [];
 $resumenJugador = [];
-$partidasJugadas = [];
+//$partidasJugadas = [];
 
 //Proceso:
 
-escribirMensajeBienvenida();{
+escribirMensajeBienvenida();
+{/*
+    
 
     if($nroIntentos=="1"){
         $puntInicial=6;
@@ -124,6 +126,7 @@ escribirMensajeBienvenida();{
     }else{
         $puntIncial=0;
     }
+    */
 }
 
 
@@ -149,7 +152,7 @@ do {
             $partidasJugadas[$numeroDePartida]["intentos"] = $partida["intentos"];
             $partidasJugadas[$numeroDePartida]["puntaje"] = $partida["puntaje"];
             $partidasJugadas[$numeroDePartida]["resultado"] = $partida["resultado"];
-            print_r($partidasJugadas); //esta línea es solo para hacer pruebas
+            mostrarPartida($partidasJugadas,$numeroDePartida);
 
             break;
         case 2: 
@@ -188,18 +191,38 @@ do {
             break;
         case 4:
             //completar qué secuencia de pasos ejecutar si el usuario elige la opción 4
-            echo "Ingrese el nombre del jugador \n";
-            $nombreUsuario = trim(fgets(STDIN));
-            foreach($partida as $elemento){
-                switch($elemento){
-                case $partida["resultado"] == "Ganada":
-                    print_r($partida);
-                }
-                break;
+            $indice=0; 
+            if (count($partidasJugadas) == 0){
+                echo "No se encontraron partidas guardadas \n";
+            }else{ 
+                
+                    
+                    echo "Ingrese el nombre del jugador \n";
+                    $nombreUsuario = trim(fgets(STDIN));  
+                    foreach($partidasJugadas as $jugador){
+                        if($partida["jugador"]<> $nombreUsuario){
+                            echo "No se encuntra el jugador en la base de datos"."\n";
+                        }
+                    }
+
+                        
+                        foreach($partidasJugadas as $partida){                
+                            if($partida["jugador"]==$nombreUsuario && $partida["resultado"] == "Ganada"){
+                    
+                                //print_r($partida);
+                                mostrarPartida($partidasJugadas, $indice);
+                            break;
+                            }
+                        $indice++;
+                        }
+                     
+
+                    
+                    
+             
+                
+            
             }
-           
-
-
             break;
         case 5:
 
