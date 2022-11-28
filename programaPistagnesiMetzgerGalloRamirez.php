@@ -24,6 +24,7 @@ include_once("wordix.php");
  */
 function cargarColeccionPalabras()
 {
+// array $coleccionPalabras
     $coleccionPalabras = [
         "MUJER", "QUESO", "FUEGO", "CASAS", "RASGO",
         "GATOS", "GOTAS", "HUEVO", "TINTO", "NAVES",
@@ -33,12 +34,6 @@ function cargarColeccionPalabras()
     ];
 
     return ($coleccionPalabras);
-}
-
-function imprimirResultado(){
-
-    return 1;
-
 }
 
 /**
@@ -120,10 +115,6 @@ $quintoIntento = 0;
 $sextoIntento = 0;
 
 //Proceso:
-
-
-
-
 
 do {
     $opcion = menu();
