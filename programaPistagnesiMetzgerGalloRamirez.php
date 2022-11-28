@@ -60,7 +60,7 @@ function menu(){
 
 function mostrarPartida($partidas, $indice){
 
-
+    $partidas=calcularPuntos($partidas);
 
     echo "***************************************************\n";
     echo "partida WORDIX n°" . $indice + 1 . ": palabra " . $partidas[$indice]["palabraWordix"] . " \n";
@@ -106,8 +106,7 @@ $resumenJugador = [];
 //Proceso:
 
 
-//print_r($partida)
-//imprimirResultado($partida)
+
 
 
 do {
