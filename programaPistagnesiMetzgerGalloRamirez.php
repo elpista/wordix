@@ -105,33 +105,6 @@ $resumenJugador = [];
 
 //Proceso:
 
-escribirMensajeBienvenida();
-{/*
-    
-
-    if($nroIntentos=="1"){
-        $puntInicial=6;
-    }
-    elseif($nroIntentos=="2"){
-        $puntInicial=5;
-    }
-    elseif($nroIntentos=="3"){
-        $puntInicial=4;
-    }
-    elseif($nroIntentos=="4"){
-        $puntInicial=3;
-    }
-    elseif($nroIntentos=="5"){
-        $puntInicial=2;
-    }
-    elseif($nroIntentos=="6"){
-        $puntInicial=1;
-    }else{
-        $puntIncial=0;
-    }
-    */
-}
-
 
 //print_r($partida)
 //imprimirResultado($partida)
