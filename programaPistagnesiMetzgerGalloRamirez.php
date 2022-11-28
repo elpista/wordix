@@ -28,7 +28,7 @@ function cargarColeccionPalabras()
         "MUJER", "QUESO", "FUEGO", "CASAS", "RASGO",
         "GATOS", "GOTAS", "HUEVO", "TINTO", "NAVES",
         "VERDE", "MELON", "YUYOS", "PIANO", "PISOS",
-        "CALLE", "PRIMA", "CARTA", "JUEGO", "PASTA"
+        "PATIO", "SILLA", "ARBOL", "LAPIZ", "GORRA"
         
     ];
 
@@ -90,12 +90,8 @@ function mostrarPartida($partidas, $indice){
 /**************************************/
 
 //Declaración de variables:
-// int $numeroPalabra
-// int $partida
-// int $buscarPartida
-// array $partidasJugadas
-// array $resumenJugador
-// array $partidasJugadas
+// int $numeroPalabra, $partida, $buscarPartida
+// array $partidasJugadas, $resumenJugador, $partidasJugadas
 
 //Inicialización de variables:
 
@@ -202,6 +198,8 @@ do {
             break;
         case 5:
             //completar qué secuencia de pasos ejecutar si el usuario elige la opción 5
+            // int $partidasTotales, $partidasGanadasTotales, $partidasPerdidas, $porcentajeDevictorias, 
+            // $primerIntento, $segundoIntento, $tercerIntento, $cuartoIntento, $quintoIntento, $sextoIntento
             $partidasTotales = 0;
             $partidasGanadasTotales = 0;
             $partidasPerdidas = 0;
