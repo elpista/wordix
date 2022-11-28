@@ -60,6 +60,8 @@ function menu(){
 
 function mostrarPartida($partidas, $indice){
 
+
+
     echo "***************************************************\n";
     echo "partida WORDIX n°" . $indice + 1 . ": palabra " . $partidas[$indice]["palabraWordix"] . " \n";
     echo "Jugador: " . $partidas[$indice]["jugador"] . " \n";
@@ -77,6 +79,8 @@ function mostrarPartida($partidas, $indice){
     echo "***************************************************\n";
 
 }
+
+
 
 /* ... COMPLETAR ... */
 
@@ -195,7 +199,7 @@ do {
                 echo "No se encontraron partidas guardadas \n";
             }else{                     
                 echo "Ingrese el nombre del jugador \n";
-                $nombreUsuario = trim(fgets(STDIN));        
+                $nombreUsuario = trim(fgets(STDIN));
 
                 $jugadorExiste=false;
                 $partidaGanada=false;
@@ -225,7 +229,78 @@ do {
             }
             break;
         case 5:
-            print_r($partidasJugadas);
+            //completar qué secuencia de pasos ejecutar si el usuario elige la opción 5
+            $partidasTotales = 0;
+            $partidasGanadasTotales = 0;
+            $partidasPerdidas = 0;
+            $porcentajeDevictorias = 0;
+            $primerIntento = 0;
+            $segundoIntento = 0;
+            $tercerIntento = 0;
+            $cuartoIntento = 0;
+            $quintoIntento = 0;
+            $sextoIntento = 0;
+
+            if (count($partidasJugadas) == 0){
+                echo "No se encontraron partidas guardadas \n";
+            }else{                     
+                echo "Ingrese el nombre del jugador \n";
+                $nombreUsuario = trim(fgets(STDIN));
+            }
+            $jugadorExiste=false;
+
+            foreach($partidasJugadas as $partida)
+            {
+                if($partida["jugador"] == $nombreUsuario)
+                {
+                    $partidasTotales++;
+                    $jugadorExiste=true;
+                
+                    if($partida["resultado"] == "Ganada"){
+                        $partidasGanadasTotales++;
+                    }
+                    else{
+                        $partidasPerdidas++;
+                    }
+                    if($partida["intentos"] == 1){
+                        $primerIntento++;
+                    }
+                    if($partida["intentos"] == 2){
+                        $segundoIntento++;
+                    }
+                    if($partida["intentos"] == 3){
+                        $tercerIntento++;
+                    }
+                    if($partida["intentos"] == 4){
+                        $cuartoIntento++;
+                    }
+                    if($partida["intentos"] == 5){
+                        $quintoIntento++;
+                    }
+                    if($partida["intentos"] == 6){
+                        $sextoIntento++;
+                    }
+                }
+            }
+
+            $porcentajeDevictorias = ($partidasGanadasTotales*100)/$partidasTotales;           
+
+            
+            echo "***************************************************\n";
+            echo "Jugador: ".$nombreUsuario."\n";
+            echo "Partidas: ".$partidasTotales."\n";
+            echo "Puntaje Total: "."0"."\n";
+            echo "Victorias: ".$partidasGanadasTotales."\n";
+            echo "perdida: ".$partidasPerdidas."\n";
+            echo "Porcentaje Victorias: ".($porcentajeDevictorias."%"."\n");
+            echo "Adivinadas:\n";
+            echo "   intento 1: ".$primerIntento."\n";
+            echo "   intento 2: ".$segundoIntento."\n";
+            echo "   intento 3: ".$tercerIntento."\n";
+            echo "   intento 4: ".$cuartoIntento."\n";
+            echo "   intento 5: ".$quintoIntento."\n";
+            echo "   intento 6: ".$sextoIntento."\n";
+            echo "***************************************************\n";
 
             break;
         case 6:
