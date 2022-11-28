@@ -41,6 +41,10 @@ function imprimirResultado(){
 
 }
 
+/**
+ * muestra las opciones del menu y retorna la opcion elegida
+ * @return int
+ */
 function menu(){
     // int $tecladoEntrada
     echo "***************************************************\n";
@@ -58,9 +62,12 @@ function menu(){
     return $tecladoEntrada;
 }
 
+/**
+ * Imprime una pantalla que demuestra el resumen de una partida
+ * @param int $indice
+ * @param array $partidas
+ */
 function mostrarPartida($partidas, $indice){
-
-    $partidas=calcularPuntos($partidas);
 
     echo "***************************************************\n";
     echo "partida WORDIX n°" . $indice + 1 . ": palabra " . $partidas[$indice]["palabraWordix"] . " \n";
@@ -81,7 +88,6 @@ function mostrarPartida($partidas, $indice){
 }
 
 
-
 /* ... COMPLETAR ... */
 
 
@@ -90,14 +96,28 @@ function mostrarPartida($partidas, $indice){
 /**************************************/
 
 //Declaración de variables:
-// int $numeroPalabra, $partida, $buscarPartida
-// array $partidasJugadas, $resumenJugador, $partidasJugadas
+// int $opcion, $numeroPalabra, $partida, $numeroDePartida $buscarPartida, $partidasTotales, $partidasGanadasTotales, 
+// $partidasPerdidas, $porcentajeDevictorias, $primerIntento, $segundoIntento, $tercerIntento, $cuartoIntento,
+// $quintoIntento, $sextoIntento
+// array $partidasJugadas, $resumenJugador
+// STRING $nombreUsuario
+// BOOLEAN $jugadorExiste, $partidaGanada
 
 //Inicialización de variables:
 
 $partidasJugadas = [];
 $resumenJugador = [];
-//$partidasJugadas = [];
+
+$partidasTotales = 0;
+$partidasGanadasTotales = 0;
+$partidasPerdidas = 0;
+$porcentajeDevictorias = 0;
+$primerIntento = 0;
+$segundoIntento = 0;
+$tercerIntento = 0;
+$cuartoIntento = 0;
+$quintoIntento = 0;
+$sextoIntento = 0;
 
 //Proceso:
 
@@ -198,18 +218,6 @@ do {
             break;
         case 5:
             //completar qué secuencia de pasos ejecutar si el usuario elige la opción 5
-            // int $partidasTotales, $partidasGanadasTotales, $partidasPerdidas, $porcentajeDevictorias, 
-            // $primerIntento, $segundoIntento, $tercerIntento, $cuartoIntento, $quintoIntento, $sextoIntento
-            $partidasTotales = 0;
-            $partidasGanadasTotales = 0;
-            $partidasPerdidas = 0;
-            $porcentajeDevictorias = 0;
-            $primerIntento = 0;
-            $segundoIntento = 0;
-            $tercerIntento = 0;
-            $cuartoIntento = 0;
-            $quintoIntento = 0;
-            $sextoIntento = 0;
 
             if (count($partidasJugadas) == 0){
                 echo "No se encontraron partidas guardadas \n";

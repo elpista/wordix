@@ -322,6 +322,7 @@ function actualizarTeclado($teclado, $estructuraPalabraIntento)
  */
 function esIntentoGanado($estructuraPalabraIntento)
 {
+// int $cantLetras
     $cantLetras = count($estructuraPalabraIntento);
     $i = 0;
 
@@ -342,15 +343,15 @@ function esIntentoGanado($estructuraPalabraIntento)
  * el jugador obtiene un puntaje de acuerdo a las reglas.
  * esta funcion calcula la cantidad de puntos obtenidos en su partida wordix.
  */
-function obtenerPuntajeWordix($nroIntentos, $palabraWordix)  /* ****COMPLETAR***** parámetros formales necesarios */
+function obtenerPuntajeWordix($nroIntentos, $palabraWordix)
 {
 // STRING $vocales, $consonantesGrupo1, $consonantesGrupo2
-// int $i, $j
+// int $i, $j, $puntos
+
     $vocales = "AEIOU";
     $consonantesGrupo1 = "BCDFGHJKLM";
     $consonantesGrupo2 = "NÑPQRSTVWXYZ"; 
 
-    /* ****COMPLETAR***** cuerpo de la función*/
     if($nroIntentos == 1){
         $puntos=6;
     }
@@ -403,11 +404,16 @@ function obtenerPuntajeWordix($nroIntentos, $palabraWordix)  /* ****COMPLETAR***
  */
 function jugarWordix($palabraWordix, $nombreUsuario)
 {
-    // array $partida
+    // array $partida, $arregloDeIntentosWordix, $teclado
+    // int $nroIntento, $indiceIntento, $puntaje
+    // STRING $palabraIntento, $ganada
+    // BOOLEAN $ganoElIntento
+
     /*Inicialización*/
     $arregloDeIntentosWordix = [];
     $teclado = iniciarTeclado();
     $nroIntento = 1;
+
     do {
 
         echo "Comenzar con el Intento " . $nroIntento . ":\n";
