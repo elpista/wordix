@@ -292,14 +292,13 @@ do {
             break;
         case 6:
 
-
-            break;
-        case 7:
-
             print_r($partidasJugadas);
             $partidasOrdenadas = $partidasJugadas;
             uasort($partidasOrdenadas, 'cmp');
             print_r($partidasOrdenadas);
+
+            break;
+        case 7:
 
             break;
         case 8:
