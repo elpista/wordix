@@ -57,6 +57,24 @@ function menu(){
     return $tecladoEntrada;
 }
 
+function cmp($a, $b) {
+    if ($a["jugador"] == $b["jugador"]) {
+        if ($a["palabraWordix"] == $b["palabraWordix"]) {
+        return 0;
+        }
+        if ($a["palabraWordix"] < $b["palabraWordix"]) {
+            return -1;
+        } else {
+            return 1;
+        }
+    }
+    if ($a["jugador"] < $b["jugador"]) {
+        return -1;
+    } else {
+        return 1;
+    }
+}
+
 /**
  * Imprime una pantalla que demuestra el resumen de una partida
  * @param int $indice
@@ -278,6 +296,10 @@ do {
             break;
         case 7:
 
+            print_r($partidasJugadas);
+            $partidasOrdenadas = $partidasJugadas;
+            uasort($partidasOrdenadas, 'cmp');
+            print_r($partidasOrdenadas);
 
             break;
         case 8:
