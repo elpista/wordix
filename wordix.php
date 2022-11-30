@@ -133,7 +133,7 @@ function escribirSegunEstado($texto, $estado)
 function escribirMensajeBienvenida()
 {
 // int $usuario
-    echo separdor();
+    
     echo "** Bienvenido \n";
     echo "Juguemos una PARTIDA de WORDIX! **\n";
     
@@ -435,7 +435,7 @@ function jugarWordix($palabraWordix, $nombreUsuario)
         $ganada = "Ganada";
         $nroIntento--;
         $puntaje = obtenerPuntajeWordix($nroIntento, $palabraWordix);
-        echo "Adivinó la palabra Wordix en el intento " . $nroIntento . "!: " . $palabraIntento . " Obtuvo $puntaje puntos!"."\n";
+        echo "Adivinó la palabra Wordix en el intento " . $nroIntento . "!: " . $nombreUsuario . " Obtuvo $puntaje puntos!"."\n";
     } else {
         $ganada = "Perdida";
         $nroIntento = 0; //reset intento
