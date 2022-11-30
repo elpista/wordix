@@ -36,6 +36,8 @@ function cargarColeccionPalabras()
     return ($coleccionPalabras);
 }
 
+
+
 /**
  * muestra las opciones del menu y retorna la opcion elegida
  * @return int
@@ -133,7 +135,7 @@ do {
         case 1: 
             //completar qué secuencia de pasos ejecutar si el usuario elige la opción 1
             $esPalabraRepetida = false;
-            echo "Ingrese el nombre del jugador \n";
+            echo "Ingrese el nombre del jugador: \n";
             $nombreUsuario = trim(fgets(STDIN));
             echo "Ingrese un número entre 1 y " . count($coleccionPalabras) . "\n";
             $numeroPalabra = solicitarNumeroEntre(1, count($coleccionPalabras)) - 1;
@@ -274,9 +276,11 @@ do {
             $nombreUsuario = "nO t13n3 n0M8rE";
 
             if (count($partidasJugadas) == 0){
-                echo "No se encontraron partidas guardadas \n";
+                $sinPartidas = "No se encontraron partidas guardadas \n";
+                $sinPartidas = escribirRojo($sinPartidas);
             }else{                     
-                echo "Ingrese el nombre del jugador \n";
+                $nombreDelJugador = "Ingrese excatamente el nombre del jugador:  \n";
+                $nombreDelJugador = escribirGris($nombreDelJugador);
                 $nombreUsuario = trim(fgets(STDIN));
                 
             

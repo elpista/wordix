@@ -133,7 +133,7 @@ function escribirSegunEstado($texto, $estado)
 function escribirMensajeBienvenida()
 {
 // int $usuario
-    echo "***************************************************\n";
+    echo separdor();
     echo "** Bienvenido \n";
     echo "Juguemos una PARTIDA de WORDIX! **\n";
     
