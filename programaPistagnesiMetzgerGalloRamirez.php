@@ -309,10 +309,13 @@ do {
             break;
         case 6:
 
-            print_r($partidasJugadas);
-            $partidasOrdenadas = $partidasJugadas;
-            uasort($partidasOrdenadas, 'cmp');
-            print_r($partidasOrdenadas);
+            if(count($partidasJugadas) == 0){
+                echo "No se han encontrado partidas \n";
+            } else{
+                $partidasOrdenadas = $partidasJugadas;
+                uasort($partidasOrdenadas, 'cmp');
+                print_r($partidasOrdenadas);
+            }
 
             break;
         case 7:
