@@ -162,9 +162,9 @@ function mostrarPartida($partidas, $indice){
 /**************************************/
 
 //Declaración de variables:
-// int $opcion, $numeroPalabra, $partida, $numeroDePartida $buscarPartida, $partidasTotales, $partidasGanadasTotales, 
-// $partidasPerdidas, $porcentajeDevictorias, $primerIntento, $segundoIntento, $tercerIntento, $cuartoIntento,
-// $quintoIntento, $sextoIntento
+// int $contador $opcion, $numeroPalabra, $partida, $numeroDePartida $buscarPartida, $partidasTotales, 
+// $partidasGanadasTotales, $partidasPerdidas, $porcentajeDevictorias, $primerIntento, $segundoIntento, $tercerIntento, 
+// $cuartoIntento, $quintoIntento, $sextoIntento
 // array $partidasJugadas, $resumenJugador, $coleccionPalabras
 // STRING $nombreUsuario, $palabraEntrada
 // BOOLEAN $jugadorExiste, $partidaGanada
@@ -185,31 +185,25 @@ do {
     switch ($opcion) {
         case 1: 
             //completar qué secuencia de pasos ejecutar si el usuario elige la opción 1
-            $esPalabraRepetida = false;
+            $contador = 0;
             $nombreUsuario = solicitarJugador();
             echo "Ingrese un número entre 1 y " . count($coleccionPalabras) . "\n";
             $numeroPalabra = solicitarNumeroEntre(1, count($coleccionPalabras)) - 1;
-            for($i = 0; $i < count($partidasJugadas) ; $i++){
-                if($partidasJugadas[$i]["jugador"] == $nombreUsuario){
-                    if($coleccionPalabras[$numeroPalabra] == $partidasJugadas[$i]["palabraWordix"]){
-                        $esPalabraRepetida = true;
+            do{
+                if($partidasJugadas[$contador]["jugador"] == $nombreUsuario){
+                    if($coleccionPalabras[$numeroPalabra] == $partidasJugadas[$contador]["palabraWordix"]){
+                        echo "Esa palabra ya ha sido ingresada por el jugador \n";
+                        echo "Ingrese un número entre 1 y " . count($coleccionPalabras) . "\n";
+                        $numeroPalabra = solicitarNumeroEntre(1, count($coleccionPalabras)) - 1;
+                        $contador = 0;
+                    } else {
+                        $contador++;
                     }
+                } else{
+                    $contador++;
                 }
-            }
-            while($esPalabraRepetida == true){
 
-                echo "Esta palabra ya ha sido usada por el jugador \n";
-                echo "Ingrese un número entre 1 y " . count($coleccionPalabras) . "\n";
-                $numeroPalabra = solicitarNumeroEntre(1, count($coleccionPalabras)) - 1;
-                $esPalabraRepetida = false;
-                for($i = 0; $i < count($partidasJugadas) ; $i++){
-                    if($partidasJugadas[$i]["jugador"] == $nombreUsuario){
-                        if($coleccionPalabras[$numeroPalabra] == $partidasJugadas[$i]["palabraWordix"]){
-                            $esPalabraRepetida = true;
-                        }
-                    }
-                }
-            }
+            }while($contador < count($partidasJugadas));
             $partida = jugarWordix($coleccionPalabras[$numeroPalabra], $nombreUsuario);
             $numeroDePartida = count($partidasJugadas);
             $partidasJugadas[$numeroDePartida]["palabraWordix"] = $partida["palabraWordix"];
@@ -222,27 +216,22 @@ do {
             break;
         case 2: 
             //completar qué secuencia de pasos ejecutar si el usuario elige la opción 2
-            $esPalabraRepetida = false;
-            $numeroPalabra = rand(0, (count($coleccionPalabras) - 1));
+            $contador = 0;
             $nombreUsuario = solicitarJugador();
-            for($i = 0; $i < count($partidasJugadas) ; $i++){
-                if($partidasJugadas[$i]["jugador"] == $nombreUsuario){
-                    if($coleccionPalabras[$numeroPalabra] == $partidasJugadas[$i]["palabraWordix"]){
-                        $esPalabraRepetida = true;
+            $numeroPalabra = rand(0, (count($coleccionPalabras) - 1));
+            do{
+                if($partidasJugadas[$contador]["jugador"] == $nombreUsuario){
+                    if($coleccionPalabras[$numeroPalabra] == $partidasJugadas[$contador]["palabraWordix"]){
+                        $numeroPalabra = rand(0, (count($coleccionPalabras) - 1));
+                        $contador = 0;
+                    } else {
+                        $contador++;
                     }
+                } else{
+                    $contador++;
                 }
-            }
-            while($esPalabraRepetida == true){
-                $numeroPalabra = rand(0, (count($coleccionPalabras) - 1));
-                $esPalabraRepetida = false;
-                for($i = 0; $i < count($partidasJugadas) ; $i++){
-                    if($partidasJugadas[$i]["jugador"] == $nombreUsuario){
-                        if($coleccionPalabras[$numeroPalabra] == $partidasJugadas[$i]["palabraWordix"]){
-                            $esPalabraRepetida = true;
-                        }
-                    }
-                }
-            }
+
+            }while($contador < count($partidasJugadas));
             $partida = jugarWordix($coleccionPalabras[$numeroPalabra], $nombreUsuario);
             $numeroDePartida = count($partidasJugadas);
             $partidasJugadas[$numeroDePartida]["palabraWordix"] = $partida["palabraWordix"];
