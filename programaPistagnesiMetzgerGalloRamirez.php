@@ -36,7 +36,6 @@ function cargarColeccionPalabras()
     return ($coleccionPalabras);
 }
 
-<<<<<<< HEAD
 function cargarPartidas(){
 
     $coleccion = [];
@@ -60,10 +59,6 @@ function cargarPartidas(){
 
 
 
-=======
-
-
->>>>>>> 191cf4cece6f08a9500c0e77445bb8421ab012f9
 /**
  * muestra las opciones del menu y retorna la opcion elegida
  * @return int
@@ -300,6 +295,8 @@ do {
             $quintoIntento = 0;
             $sextoIntento = 0;
             $nombreUsuario = "nO t13n3 n0M8rE";
+            $jugadorExiste = false;
+            $nroDeBusqueda = 0;
 
             if (count($partidasJugadas) == 0){
                 $sinPartidas = "No se encontraron partidas guardadas \n";
@@ -347,11 +344,6 @@ do {
                         if($partida["intentos"] == 6){
                             $sextoIntento++;
                         }
-                    }else{
-                       $noHayJugador = "El jugador no existe.";
-                       $noHayJugador = escribirRojo($noHayJugador);
-                       echo $noHayJugador."\n";
-                              
                     }
                 }
             
@@ -359,8 +351,14 @@ do {
             $porcentajeDevictorias = ($partidasGanadasTotales*100)/$partidasTotales;      
             }     
 
-            
-            echo "***************************************************\n";
+            if(!$jugadorExiste){
+                $noHayJugador = "El jugador existe.";
+                $noHayJugador = escribirRojo($noHayJugador);
+                echo $noHayJugador."\n";
+            }
+
+            if($jugadorExiste){
+                echo "***************************************************\n";
             echo "Jugador: ".$nombreUsuario."\n";
             echo "Partidas: ".$partidasTotales."\n";
             echo "Puntaje Total: ".$puntajeFinal."\n";
@@ -375,6 +373,8 @@ do {
             echo "   intento 5: ".$quintoIntento."\n";
             echo "   intento 6: ".$sextoIntento."\n";
             echo "***************************************************\n";
+
+            }
             }
 
             break;

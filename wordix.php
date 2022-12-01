@@ -435,11 +435,7 @@ function jugarWordix($palabraWordix, $nombreUsuario)
         $ganada = "Ganada";
         $nroIntento--;
         $puntaje = obtenerPuntajeWordix($nroIntento, $palabraWordix);
-<<<<<<< HEAD
-        echo "Adivinó la palabra Wordix en el intento " . $nroIntento . "!: " . $palabraIntento . " Obtuvo $puntaje puntos!"."\n";
-=======
         echo "Adivinó la palabra Wordix en el intento " . $nroIntento . "!: " . $nombreUsuario . " Obtuvo $puntaje puntos!"."\n";
->>>>>>> 191cf4cece6f08a9500c0e77445bb8421ab012f9
     } else {
         $ganada = "Perdida";
         $nroIntento = 0; //reset intento
