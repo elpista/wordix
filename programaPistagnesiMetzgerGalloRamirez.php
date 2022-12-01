@@ -73,6 +73,43 @@ function solicitarJugador(){
     } while($esNumerico);
     return strtolower($nombreEntrada);
 }
+function primeraPartidaGanada($partidas){
+    $indice=0;
+    $indiceRetorno = -1;
+            if (count($partidas) == 0){
+                echo "No se encontraron partidas guardadas \n";
+            }else{
+                $nombreUsuario = solicitarJugador();
+
+                $jugadorExiste=false;
+                $partidaGanada=false;
+                while($indice < count($partidas)){
+                    if($partidas[$indice]["jugador"]==$nombreUsuario){
+                        $jugadorExiste=true;
+
+                        if($partidas[$indice]["resultado"] == "Ganada"){                                                   
+                            $partidaGanada=true;
+                            $indiceRetorno = $indice;
+                            break;
+                        }
+                    }
+
+                    $indice++;
+                }
+                
+                if(!$jugadorExiste){
+                    $indiceRetorno = -2;
+                }
+                else {
+                    if(!$partidaGanada){
+                        echo "El jugador ".$nombreUsuario." no ganó ninguna partida\n";            
+                    }
+
+                }
+            }
+
+ return($indiceRetorno);
+}
 
 function palabraNueva(){
     echo "ingrese una palabra de 5 letras \n";
@@ -263,38 +300,9 @@ do {
             break;
         case 4:
             //completar qué secuencia de pasos ejecutar si el usuario elige la opción 4
-            $indice=0; 
-            if (count($partidasJugadas) == 0){
-                echo "No se encontraron partidas guardadas \n";
-            }else{
-                $nombreUsuario = solicitarJugador();
+            echo primeraPartidaGanada($partidasJugadas);
 
-                $jugadorExiste=false;
-                $partidaGanada=false;
-                while($indice < count($partidasJugadas)){
-                    if($partidasJugadas[$indice]["jugador"]==$nombreUsuario){
-                        $jugadorExiste=true;
-
-                        if($partidasJugadas[$indice]["resultado"] == "Ganada"){                                                   
-                            $partidaGanada=true;
-                            mostrarPartida($partidasJugadas, $indice);
-                            break;
-                        }
-                    }
-
-                    $indice++;
-                }
-                
-                if(!$jugadorExiste){
-                    echo "No existe el jugador\n";
-                }
-                else {
-                    if(!$partidaGanada){
-                        echo "El jugador ".$nombreUsuario." no ganó ninguna partida\n";            
-                    }
-
-                }
-            }
+            
             break;
         case 5:
             //completar qué secuencia de pasos ejecutar si el usuario elige la opción 5
