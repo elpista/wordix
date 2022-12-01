@@ -59,7 +59,15 @@ function cargarPartidas(){
 
 }
 
-
+function palabraNueva(){
+    echo "ingrese una palabra de 5 letras \n";
+    $palabraEntrada = trim(fgets(STDIN));
+    while (strlen($palabraEntrada) != 5){
+        echo "debes ingresar una palabra de EXACTAMENTE 5 letras \n";
+        $palabraEntrada = trim(fgets(STDIN));
+    }
+    return strtoupper($palabraEntrada);
+}
 
 /**
  * muestra las opciones del menu y retorna la opcion elegida
@@ -82,6 +90,11 @@ function menu(){
     return $tecladoEntrada;
 }
 
+/** función comparadora utilizada para la función uasort
+ * @param string $a
+ * @param string $b
+ * @return int
+ */
 function cmp($a, $b) {
     if ($a["jugador"] == $b["jugador"]) {
         if ($a["palabraWordix"] == $b["palabraWordix"]) {
@@ -257,11 +270,11 @@ do {
 
                 $jugadorExiste=false;
                 $partidaGanada=false;
-                foreach($partidasJugadas as $partida){                
-                    if($partida["jugador"]==$nombreUsuario){
+                while($indice < count($partidasJugadas)){
+                    if($partidasJugadas[$indice]["jugador"]==$nombreUsuario){
                         $jugadorExiste=true;
 
-                        if($partida["resultado"] == "Ganada"){                                                   
+                        if($partidasJugadas[$indice]["resultado"] == "Ganada"){                                                   
                             $partidaGanada=true;
                             mostrarPartida($partidasJugadas, $indice);
                             break;
@@ -392,14 +405,19 @@ do {
             break;
         case 7:
 
+            $contador = 0;
             $palabraEntrada = "";
-            echo "ingrese una palabra de 5 letras \n";
-            $palabraEntrada = trim(fgets(STDIN));
-            while (strlen($palabraEntrada) != 5){
-                echo "debes ingresar una palabra de EXACTAMENTE 5 letras \n";
-                $palabraEntrada = trim(fgets(STDIN));
-            }
-            $palabraNueva = strtoupper($palabraEntrada);
+            $palabraNueva = palabraNueva();
+            do{
+                if($coleccionPalabras[$contador] == $palabraNueva){
+                    echo "esa palabra ya ha sido creada, ";
+                    $palabraNueva = palabraNueva();
+                    $contador = 0;
+                } else{
+                    $contador = $contador + 1;
+                }
+            } while($contador < count($coleccionPalabras));
+            
             array_push($coleccionPalabras, $palabraNueva);
             echo "La palabra " . $palabraEntrada . " ha sido agregada correctamente \n";
 
