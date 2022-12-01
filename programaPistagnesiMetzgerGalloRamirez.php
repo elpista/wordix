@@ -59,6 +59,21 @@ function cargarPartidas(){
 
 }
 
+function solicitarJugador(){
+
+    $esNumerico = true;
+    do{
+        echo "Ingrese el nombre del jugador: \n";
+        $nombreEntrada = trim(fgets(STDIN));
+        if(is_numeric($nombreEntrada[0])){
+            echo "el nombre no puede ser numérico \n";
+        }else{
+            $esNumerico = false;
+        }
+    } while($esNumerico);
+    return strtolower($nombreEntrada);
+}
+
 function palabraNueva(){
     echo "ingrese una palabra de 5 letras \n";
     $palabraEntrada = trim(fgets(STDIN));
@@ -171,8 +186,7 @@ do {
         case 1: 
             //completar qué secuencia de pasos ejecutar si el usuario elige la opción 1
             $esPalabraRepetida = false;
-            echo "Ingrese el nombre del jugador: \n";
-            $nombreUsuario = trim(fgets(STDIN));
+            $nombreUsuario = solicitarJugador();
             echo "Ingrese un número entre 1 y " . count($coleccionPalabras) . "\n";
             $numeroPalabra = solicitarNumeroEntre(1, count($coleccionPalabras)) - 1;
             for($i = 0; $i < count($partidasJugadas) ; $i++){
@@ -210,8 +224,7 @@ do {
             //completar qué secuencia de pasos ejecutar si el usuario elige la opción 2
             $esPalabraRepetida = false;
             $numeroPalabra = rand(0, (count($coleccionPalabras) - 1));
-            echo "Ingrese el nombre del jugador \n";
-            $nombreUsuario = trim(fgets(STDIN));
+            $nombreUsuario = solicitarJugador();
             for($i = 0; $i < count($partidasJugadas) ; $i++){
                 if($partidasJugadas[$i]["jugador"] == $nombreUsuario){
                     if($coleccionPalabras[$numeroPalabra] == $partidasJugadas[$i]["palabraWordix"]){
@@ -264,9 +277,8 @@ do {
             $indice=0; 
             if (count($partidasJugadas) == 0){
                 echo "No se encontraron partidas guardadas \n";
-            }else{                     
-                echo "Ingrese el nombre del jugador \n";
-                $nombreUsuario = trim(fgets(STDIN));
+            }else{
+                $nombreUsuario = solicitarJugador();
 
                 $jugadorExiste=false;
                 $partidaGanada=false;
