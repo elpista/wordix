@@ -36,6 +36,7 @@ function cargarColeccionPalabras()
     return ($coleccionPalabras);
 }
 
+<<<<<<< HEAD
 function cargarPartidas(){
 
     $coleccion = [];
@@ -59,6 +60,10 @@ function cargarPartidas(){
 
 
 
+=======
+
+
+>>>>>>> 191cf4cece6f08a9500c0e77445bb8421ab012f9
 /**
  * muestra las opciones del menu y retorna la opcion elegida
  * @return int
