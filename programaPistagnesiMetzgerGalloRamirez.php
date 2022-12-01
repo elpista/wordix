@@ -111,16 +111,6 @@ function primeraPartidaGanada($partidas){
  return($indiceRetorno);
 }
 
-function palabraNueva(){
-    echo "ingrese una palabra de 5 letras \n";
-    $palabraEntrada = trim(fgets(STDIN));
-    while (strlen($palabraEntrada) != 5){
-        echo "debes ingresar una palabra de EXACTAMENTE 5 letras \n";
-        $palabraEntrada = trim(fgets(STDIN));
-    }
-    return strtoupper($palabraEntrada);
-}
-
 /**
  * muestra las opciones del menu y retorna la opcion elegida
  * @return int
@@ -416,11 +406,11 @@ do {
 
             $contador = 0;
             $palabraEntrada = "";
-            $palabraNueva = palabraNueva();
+            $palabraNueva = leerPalabra5Letras();
             do{
                 if($coleccionPalabras[$contador] == $palabraNueva){
                     echo "esa palabra ya ha sido creada, ";
-                    $palabraNueva = palabraNueva();
+                    $palabraNueva = leerPalabra5Letras();
                     $contador = 0;
                 } else{
                     $contador = $contador + 1;
