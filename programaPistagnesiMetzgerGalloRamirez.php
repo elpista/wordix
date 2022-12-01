@@ -35,8 +35,10 @@ function cargarColeccionPalabras()
 
     return ($coleccionPalabras);
 }
-
-function cargarPartidas(){
+/*function agregarNombreUsuario($nombre){
+    if($nombre)
+}*/
+function cargarPartidas(){ 
 
     $coleccion = [];
     $pa1 = ["palabraWordix" => "SUECO", "jugador" => "kleiton", "intentos" => 0, "puntaje" => 0, "resultado" => "Perdida"];
@@ -299,11 +301,12 @@ do {
             $nroDeBusqueda = 0;
 
             if (count($partidasJugadas) == 0){
-                $sinPartidas = "No se encontraron partidas guardadas \n";
-                $sinPartidas = escribirRojo($sinPartidas);
+               
+                escribirRojo("No se encontraron partidas guardadas \n");
             }else{                     
-                $nombreDelJugador = "Ingrese excatamente el nombre del jugador:  \n";
-                $nombreDelJugador = escribirGris($nombreDelJugador);
+               
+                echo escribirGris("Ingrese excatamente el nombre del jugador: ");
+                echo "\n";
                 $nombreUsuario = trim(fgets(STDIN));
                 
             
@@ -352,9 +355,7 @@ do {
             }     
 
             if(!$jugadorExiste){
-                $noHayJugador = "El jugador existe.";
-                $noHayJugador = escribirRojo($noHayJugador);
-                echo $noHayJugador."\n";
+                echo escribirRojo("El jugador no existe.")."\n";
             }
 
             if($jugadorExiste){
