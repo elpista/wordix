@@ -35,9 +35,9 @@ function cargarColeccionPalabras()
 
     return ($coleccionPalabras);
 }
-/*function agregarNombreUsuario($nombre){
-    if($nombre)
-}*/
+/** retorna un arreglo de 12 partidas
+ * @return array
+ */
 function cargarPartidas(){ 
 
     $coleccion = [];
@@ -59,8 +59,12 @@ function cargarPartidas(){
 
 }
 
+/** solicita el nombre de un jugador, verifica si no es numérico y lo devuelve en minúscula
+ * @return string
+ */
 function solicitarJugador(){
-
+// boolean $esNumerico
+// string $nombreEntrada
     $esNumerico = true;
     do{
         echo "Ingrese el nombre del jugador: \n";
@@ -73,7 +77,100 @@ function solicitarJugador(){
     } while($esNumerico);
     return strtolower($nombreEntrada);
 }
-function primeraPartidaGanada($partidas,$jugador){
+
+/** recibiendo un arreglo de partidas y un nombre de usuario, muestra el resumen del jugador
+ * @param array $partidasJugadas
+ * @param string $nombreUsuario
+ */
+function mostrarResumen($partidasJugadas, $nombreUsuario){
+// int $partidasTotales, $partidasGanadasTotales, $partidasPerdidas, $porcentajeDevictorias, 
+// $primerIntento, $segundoIntento, $tercerIntento,  $cuartoIntento, $quintoIntento, $sextoIntento, $nroDeBusqueda
+// boolean $jugadorExiste
+    $partidasTotales = 0;
+    $puntajeFinal = 0;
+    $partidasGanadasTotales = 0;
+    $partidasPerdidas = 0;
+    $puntajeFinal = 0;
+    $porcentajeDevictorias = 0;
+    $primerIntento = 0;
+    $segundoIntento = 0;
+    $tercerIntento = 0;
+    $cuartoIntento = 0;
+    $quintoIntento = 0;
+    $sextoIntento = 0;
+    $jugadorExiste = false;
+    $nroDeBusqueda = 0;
+
+    foreach($partidasJugadas as $partida){
+        if($partida["jugador"] == $nombreUsuario)
+        {
+            $partidasTotales++;
+            $jugadorExiste=true;
+
+            if($partida["resultado"] == "Ganada"){
+                $partidasGanadasTotales++;
+            }
+            else{
+                $partidasPerdidas++;
+            }
+            if($partida["puntaje"] >= 0){
+                $puntajeFinal = $puntajeFinal + $partida["puntaje"];
+
+            }
+            if($partida["intentos"] == 1){
+                $primerIntento++;
+            }
+            if($partida["intentos"] == 2){
+                $segundoIntento++;
+            }
+            if($partida["intentos"] == 3){
+                $tercerIntento++;
+            }
+            if($partida["intentos"] == 4){
+                $cuartoIntento++;
+            }
+            if($partida["intentos"] == 5){
+                $quintoIntento++;
+            }
+            if($partida["intentos"] == 6){
+                $sextoIntento++;
+            }
+        }
+    }
+
+    if($partidasTotales > 0){
+    $porcentajeDevictorias = ($partidasGanadasTotales*100)/$partidasTotales;      
+    }     
+
+    if(!$jugadorExiste){
+        echo escribirRojo("El jugador no existe.")."\n";
+    }else {
+        echo "***************************************************\n";
+        echo "Jugador: ".$nombreUsuario."\n";
+        echo "Partidas: ".$partidasTotales."\n";
+        echo "Puntaje Total: ".$puntajeFinal."\n";
+        echo "Victorias: ".$partidasGanadasTotales."\n";
+        echo "perdida: ".$partidasPerdidas."\n";
+        echo "Porcentaje Victorias: ".($porcentajeDevictorias."%"."\n");
+        echo "Adivinadas:\n";
+        echo "   intento 1: ".$primerIntento."\n";
+        echo "   intento 2: ".$segundoIntento."\n";
+        echo "   intento 3: ".$tercerIntento."\n";
+        echo "   intento 4: ".$cuartoIntento."\n";
+        echo "   intento 5: ".$quintoIntento."\n";
+        echo "   intento 6: ".$sextoIntento."\n";
+        echo "***************************************************\n";
+    }
+}
+
+/** recibiendo un arreglo de partidas y un nombre de jugador, retorna el índice de la primer partida ganadora del jugador
+ * @param array $partidas
+ * @param string $jugador
+ * @return int
+ */
+function primeraPartidaGanada($partidas, $jugador){
+// int $indice, $indiceRetorno
+// boolean $jugadorEncontrado
     $indice=0;
     $indiceRetorno = -1;
     $jugadorEncontrado = false;
@@ -178,9 +275,7 @@ function mostrarPartida($partidas, $indice){
 /**************************************/
 
 //Declaración de variables:
-// int $contador $opcion, $numeroPalabra, $partida, $numeroDePartida $buscarPartida, $partidasTotales, 
-// $partidasGanadasTotales, $partidasPerdidas, $porcentajeDevictorias, $primerIntento, $segundoIntento, $tercerIntento, 
-// $cuartoIntento, $quintoIntento, $sextoIntento
+// int $contador $opcion, $numeroPalabra, $partida, $numeroDePartida $buscarPartida
 // array $partidasJugadas, $resumenJugador, $coleccionPalabras
 // STRING $nombreUsuario, $palabraEntrada
 // BOOLEAN $jugadorExiste, $partidaGanada
