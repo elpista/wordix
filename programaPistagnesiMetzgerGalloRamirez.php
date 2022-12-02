@@ -73,43 +73,32 @@ function solicitarJugador(){
     } while($esNumerico);
     return strtolower($nombreEntrada);
 }
-function primeraPartidaGanada($partidas){
+function primeraPartidaGanada($partidas,$jugador){
     $indice=0;
     $indiceRetorno = -1;
-            if (count($partidas) == 0){
-                echo "No se encontraron partidas guardadas \n";
-            }else{
-                $nombreUsuario = solicitarJugador();
-
-                $jugadorExiste=false;
-                $partidaGanada=false;
+    $jugadorEncontrado = false;
+            if (count($partidas) > 0){
                 while($indice < count($partidas)){
-                    if($partidas[$indice]["jugador"]==$nombreUsuario){
-                        $jugadorExiste=true;
-
-                        if($partidas[$indice]["resultado"] == "Ganada"){                                                   
-                            $partidaGanada=true;
+                    if($partidas[$indice]["jugador"]==$jugador){
+                        $jugadorEncontrado = true;
+                        if($partidas[$indice]["resultado"] == "Ganada"){
                             $indiceRetorno = $indice;
                             break;
                         }
+                        
                     }
 
                     $indice++;
                 }
-                
-                if(!$jugadorExiste){
-                    $indiceRetorno = -2;
-                }
-                else {
-                    if(!$partidaGanada){
-                        echo "El jugador ".$nombreUsuario." no ganó ninguna partida\n";            
-                    }
-
-                }
             }
+            if(!$jugadorEncontrado){
+                $indiceRetorno = -2;
+            }
+           
+            
 
  return($indiceRetorno);
-}
+ }
 
 /**
  * muestra las opciones del menu y retorna la opcion elegida
@@ -216,6 +205,7 @@ do {
             $nombreUsuario = solicitarJugador();
             echo "Ingrese un número entre 1 y " . count($coleccionPalabras) . "\n";
             $numeroPalabra = solicitarNumeroEntre(1, count($coleccionPalabras)) - 1;
+            if(count($partidasJugadas) > 0){
             do{
                 if($partidasJugadas[$contador]["jugador"] == $nombreUsuario){
                     if($coleccionPalabras[$numeroPalabra] == $partidasJugadas[$contador]["palabraWordix"]){
@@ -231,6 +221,7 @@ do {
                 }
 
             }while($contador < count($partidasJugadas));
+        }
             $partida = jugarWordix($coleccionPalabras[$numeroPalabra], $nombreUsuario);
             $numeroDePartida = count($partidasJugadas);
             $partidasJugadas[$numeroDePartida]["palabraWordix"] = $partida["palabraWordix"];
@@ -290,8 +281,25 @@ do {
             break;
         case 4:
             //completar qué secuencia de pasos ejecutar si el usuario elige la opción 4
-            echo primeraPartidaGanada($partidasJugadas);
+            if(count($partidasJugadas) > 0){
 
+            
+            $nombreUsuario = solicitarJugador();
+            $indice = primeraPartidaGanada($partidasJugadas,$nombreUsuario);
+           
+            if($indice >= 0){
+                mostrarPartida($partidasJugadas,$indice);
+            }elseif($indice == -1){
+                escribirRojo("EL JUGADOR NO GANO NINGUNA PARTIDA.");
+                echo "\n";
+            }elseif($indice == -2){
+                escribirRojo("EL JUGADOR NO EXISTE.");
+                echo "\n";
+            }
+        }else{
+            escribirRojo("NO HAY PARTIDAS.");
+            echo "\n";
+        }
             
             break;
         case 5:
