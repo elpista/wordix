@@ -292,6 +292,7 @@ do {
             //completar qué secuencia de pasos ejecutar si el usuario elige la opción 1
             $contador = 0;
             $nombreUsuario = solicitarJugador();
+
             echo "Ingrese un número entre 1 y " . count($coleccionPalabras) . "\n";
             $numeroPalabra = solicitarNumeroEntre(1, count($coleccionPalabras)) - 1;
             do{
@@ -309,6 +310,7 @@ do {
                 }
 
             }while($contador < count($partidasJugadas));
+
             $partida = jugarWordix($coleccionPalabras[$numeroPalabra], $nombreUsuario);
             $numeroDePartida = count($partidasJugadas);
             $partidasJugadas[$numeroDePartida]["palabraWordix"] = $partida["palabraWordix"];
