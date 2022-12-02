@@ -222,6 +222,7 @@ do {
                 }
 
             }while($contador < count($partidasJugadas));
+        }
             $partida = jugarWordix($coleccionPalabras[$numeroPalabra], $nombreUsuario);
             $numeroDePartida = count($partidasJugadas);
             $partidasJugadas[$numeroDePartida]["palabraWordix"] = $partida["palabraWordix"];
