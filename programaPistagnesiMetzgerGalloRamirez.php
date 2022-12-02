@@ -98,7 +98,7 @@ function primeraPartidaGanada($partidas,$jugador){
             
 
  return($indiceRetorno);
- }
+}
 
 /**
  * muestra las opciones del menu y retorna la opcion elegida
@@ -203,6 +203,7 @@ do {
             //completar qué secuencia de pasos ejecutar si el usuario elige la opción 1
             $contador = 0;
             $nombreUsuario = solicitarJugador();
+
             echo "Ingrese un número entre 1 y " . count($coleccionPalabras) . "\n";
             $numeroPalabra = solicitarNumeroEntre(1, count($coleccionPalabras)) - 1;
             if(count($partidasJugadas) > 0){
@@ -221,7 +222,6 @@ do {
                 }
 
             }while($contador < count($partidasJugadas));
-        }
             $partida = jugarWordix($coleccionPalabras[$numeroPalabra], $nombreUsuario);
             $numeroDePartida = count($partidasJugadas);
             $partidasJugadas[$numeroDePartida]["palabraWordix"] = $partida["palabraWordix"];
@@ -304,98 +304,16 @@ do {
             break;
         case 5:
             //completar qué secuencia de pasos ejecutar si el usuario elige la opción 5
-            $partidasTotales = 0;
-            $puntajeFinal = 0;
-            $partidasGanadasTotales = 0;
-            $partidasPerdidas = 0;
-            $puntajeFinal = 0;
-            $porcentajeDevictorias = 0;
-            $primerIntento = 0;
-            $segundoIntento = 0;
-            $tercerIntento = 0;
-            $cuartoIntento = 0;
-            $quintoIntento = 0;
-            $sextoIntento = 0;
-            $nombreUsuario = "nO t13n3 n0M8rE";
-            $jugadorExiste = false;
-            $nroDeBusqueda = 0;
 
             if (count($partidasJugadas) == 0){
                
                 escribirRojo("No se encontraron partidas guardadas \n");
-            }else{                     
+            }else{
                
                 echo escribirGris("Ingrese excatamente el nombre del jugador: ");
                 echo "\n";
                 $nombreUsuario = trim(fgets(STDIN));
-                
-            
-            
-
-                foreach($partidasJugadas as $partida)
-                {
-                    if($partida["jugador"] == $nombreUsuario)
-                    {
-                        $partidasTotales++;
-                        $jugadorExiste=true;
-                
-                        if($partida["resultado"] == "Ganada"){
-                            $partidasGanadasTotales++;
-                        }
-                        else{
-                            $partidasPerdidas++;
-                        }
-                        if($partida["puntaje"] >= 0){
-                            $puntajeFinal = $puntajeFinal + $partida["puntaje"];
-
-                        }
-                        if($partida["intentos"] == 1){
-                            $primerIntento++;
-                        }
-                        if($partida["intentos"] == 2){
-                            $segundoIntento++;
-                        }
-                        if($partida["intentos"] == 3){
-                            $tercerIntento++;
-                        }
-                        if($partida["intentos"] == 4){
-                            $cuartoIntento++;
-                        }
-                        if($partida["intentos"] == 5){
-                            $quintoIntento++;
-                        }
-                        if($partida["intentos"] == 6){
-                            $sextoIntento++;
-                        }
-                    }
-                }
-            
-            if($partidasTotales > 0){
-            $porcentajeDevictorias = ($partidasGanadasTotales*100)/$partidasTotales;      
-            }     
-
-            if(!$jugadorExiste){
-                echo escribirRojo("El jugador no existe.")."\n";
-            }
-
-            if($jugadorExiste){
-                echo "***************************************************\n";
-            echo "Jugador: ".$nombreUsuario."\n";
-            echo "Partidas: ".$partidasTotales."\n";
-            echo "Puntaje Total: ".$puntajeFinal."\n";
-            echo "Victorias: ".$partidasGanadasTotales."\n";
-            echo "perdida: ".$partidasPerdidas."\n";
-            echo "Porcentaje Victorias: ".($porcentajeDevictorias."%"."\n");
-            echo "Adivinadas:\n";
-            echo "   intento 1: ".$primerIntento."\n";
-            echo "   intento 2: ".$segundoIntento."\n";
-            echo "   intento 3: ".$tercerIntento."\n";
-            echo "   intento 4: ".$cuartoIntento."\n";
-            echo "   intento 5: ".$quintoIntento."\n";
-            echo "   intento 6: ".$sextoIntento."\n";
-            echo "***************************************************\n";
-
-            }
+                mostrarResumen($partidasJugadas, $nombreUsuario);
             }
 
             break;
