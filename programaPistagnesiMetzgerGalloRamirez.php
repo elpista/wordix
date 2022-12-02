@@ -175,26 +175,21 @@ function primeraPartidaGanada($partidas, $jugador){
     $indiceRetorno = -1;
     $jugadorEncontrado = false;
             if (count($partidas) > 0){
-                while($indice < count($partidas)){
+                while($indiceRetorno == -1 && $indice < count($partidas)){
                     if($partidas[$indice]["jugador"]==$jugador){
                         $jugadorEncontrado = true;
                         if($partidas[$indice]["resultado"] == "Ganada"){
                             $indiceRetorno = $indice;
-                            break;
-                        }
-                        
+                        }                        
                     }
-
                     $indice++;
                 }
             }
             if(!$jugadorEncontrado){
                 $indiceRetorno = -2;
-            }
-           
-            
+            }            
 
- return($indiceRetorno);
+    return($indiceRetorno);
 }
 
 /**
